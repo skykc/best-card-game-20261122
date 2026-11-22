@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Duel — a card duel of fire, frost, gale &amp; stone</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="stage">
+  <header id="topbar">
+    <div class="brand">🔥 EMBER DUEL</div>
+    <div class="top-mid"><span id="round-label">ROUND 1</span><span class="dot">•</span><span id="score-label">SCORE 0</span></div>
+    <div class="top-right"><span id="combo-label">COMBO ×0</span></div>
+  </header>
+
+  <section id="foe-row">
+    <div class="plate foe">
+      <div class="avatar">🐉</div>
+      <div class="plate-info">
+        <div class="plate-name">ASH WYRM <span class="tag">RIVAL AI</span></div>
+        <div class="life"><span class="life-num" id="ai-life">30</span><span class="life-max">/ 30 ♥</span></div>
+      </div>
+    </div>
+    <div id="ai-hand" class="mini-hand" aria-label="Opponent hand"></div>
+  </section>
+
+  <section id="arena">
+    <div id="arena-player" class="arena-slot"><div class="slot-hint">YOUR CARD</div></div>
+    <div id="vs-badge">VS</div>
+    <div id="arena-ai" class="arena-slot"><div class="slot-hint">RIVAL CARD</div></div>
+  </section>
+
+  <div id="clash-banner" class="hidden"></div>
+  <div id="log-line">Welcome to the Ember Duel. Play a card to begin.</div>
+  <div id="preview-line"></div>
+
+  <section id="hand-row">
+    <div id="hand"></div>
+  </section>
+
+  <footer id="bottombar">
+    <div class="plate you">
+      <div class="avatar">🛡️</div>
+      <div class="plate-info">
+        <div class="plate-name">YOU · EMBER WARDEN</div>
+        <div class="life"><span class="life-num" id="player-life">30</span><span class="life-max">/ 30 ♥</span></div>
+        <div class="energy" id="energy-pips" aria-label="Embers"></div>
+      </div>
+    </div>
+    <div id="controls">
+      <button id="play-btn" type="button">▶ PLAY CARD <span class="key">Enter</span></button>
+      <button id="continue-btn" type="button" class="hidden">CONTINUE → <span class="key">Space</span></button>
+      <div id="hint">Click a card or press 1–5 to pick it · Enter plays it · R restarts</div>
+    </div>
+    <div id="element-wheel">🔥 beats 🌪️ &nbsp;·&nbsp; 🌪️ beats 🪨 &nbsp;·&nbsp; 🪨 beats ❄️ &nbsp;·&nbsp; ❄️ beats 🔥<br><span>Element advantage: +2 power in a clash</span></div>
+  </footer>
+
+  <div id="title-screen" class="overlay">
+    <div class="panel">
+      <div class="title-kicker">A CARD DUEL OF FIRE, FROST, GALE &amp; STONE</div>
+      <h1>🔥 EMBER DUEL 🔥</h1>
+      <p class="tagline">You are the Ember Warden. The Ash Wyrm waits across the table.<br>
+      Play a card each round. The stronger card wins the clash — and the loser burns.</p>
+      <div class="howto">
+        <div><b>1 · PICK</b><span>Click a card or press 1–5. Each card costs embers.</span></div>
+        <div><b>2 · CLASH</b><span>Power beats power. Element advantage adds +2. Win streaks build a combo.</span></div>
+        <div><b>3 · SURVIVE</b><span>Loser loses life equal to the gap. First to 0 life falls.</span></div>
+      </div>
+      <button id="start-btn" type="button">⚔ START THE DUEL <span class="key">Enter</span></button>
+      <p class="controls-line">Mouse: click to pick, double-click to play · Keys: 1–5 pick · Enter / Space play &amp; continue · R restart · Esc title</p>
+    </div>
+  </div>
+
+  <div id="end-screen" class="overlay hidden">
+    <div class="panel">
+      <h1 id="end-title">VICTORY</h1>
+      <p id="end-sub" class="tagline"></p>
+      <div id="end-stats" class="stats"></div>
+      <button id="again-btn" type="button">↻ PLAY AGAIN <span class="key">R</span></button>
+      <p class="controls-line">Press R or click Play Again for a new duel.</p>
+    </div>
+  </div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
